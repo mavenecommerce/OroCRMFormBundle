@@ -40,7 +40,7 @@ class ContactRequestType extends AbstractType implements EmbeddedFormInterface
         }
 
 //        $builder->add('firstName', 'text', ['label' => 'orocrm.contactus.contactrequest.first_name.label']);
-//        $builder->add('lastName', 'text', ['label' => 'orocrm.contactus.contactrequest.last_name.label']);
+        $builder->add('lastName', 'text', ['label' => 'orocrm.contactus.contactrequest.last_name.label']);
         $builder->add('firstName', 'text', ['label' => 'Your name']);
 //        $builder->add(
 //            'organizationName',
