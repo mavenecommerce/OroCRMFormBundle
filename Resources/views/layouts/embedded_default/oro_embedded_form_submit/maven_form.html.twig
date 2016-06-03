@@ -19,39 +19,6 @@
 {% endblock %}
 
 {% block form_widget %}
-
-    <form id="contactFormPopup" action="#" data-toggle="validator" data-focus="false" novalidate="true">
-
-            <div class="col-xs-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="nameModalContactUs" id="nameModalContactUs" class="form-control input-lg" placeholder="Your name *" data-error="Please fill out this field" required="">
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-
-
-
-            <div class="col-xs-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="contactModalContactUs" id="contactModalContactUs" class="form-control input-lg" placeholder="Your email or phone number *" data-error="Please fill out this field" required="">
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-12">
-                <div class="form-group">
-                    <textarea name="messageModalContactUs" id="messageModalContactUs" rows="5" class="form-control input-lg" placeholder="Tell us how we can help you with your development process *" data-error="Please fill out this field" required=""></textarea><grammarly-btn><div style="z-index: 2; opacity: 1; transform: translate(552px, 130px);" class="_9b5ef6-textarea_btn _9b5ef6-not_focused" data-grammarly-reactid=".3"><div class="_9b5ef6-transform_wrap" data-grammarly-reactid=".3.0"><div title="Protected by Grammarly" class="_9b5ef6-status" data-grammarly-reactid=".3.0.0">&nbsp;</div></div></div></grammarly-btn>
-                    <div class="help-block with-errors textarea"></div>
-                </div>
-            </div>
-        <div class="text-center">
-            <div class="buttons-set">
-                <input type="text" name="hideit" id="hideit" value="" style="display:none !important;">
-                <input type="hidden" name="fname" value="">
-                <button title="contact us send btn" class="btn btn-info">Contact us now</button>
-            </div>
-        </div>
-    </form>
-
     <div class="page-title">
         <h1>{% trans %}Contact Us{% endtrans %}</h1>
     </div>
