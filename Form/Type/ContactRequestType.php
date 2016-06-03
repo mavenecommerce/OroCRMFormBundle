@@ -39,50 +39,55 @@ class ContactRequestType extends AbstractType implements EmbeddedFormInterface
             );
         }
 
-//        $builder->add('firstName', 'text', ['label' => 'orocrm.contactus.contactrequest.first_name.label']);
+        $builder->add('firstName', 'text', ['label' => 'orocrm.contactus.contactrequest.first_name.label']);
         $builder->add('lastName', 'text', ['label' => 'orocrm.contactus.contactrequest.last_name.label']);
-        $builder->add('firstName', 'text', ['label' => 'Your name']);
-//        $builder->add(
-//            'organizationName',
-//            'text',
-//            ['required' => false, 'label' => 'orocrm.contactus.contactrequest.organization_name.label']
-//        );
-//        $builder->add(
-//            'preferredContactMethod',
-//            'choice',
-//            [
-//                'choices'  => [
-//                    ContactRequest::CONTACT_METHOD_BOTH  => ContactRequest::CONTACT_METHOD_BOTH,
-//                    ContactRequest::CONTACT_METHOD_PHONE => ContactRequest::CONTACT_METHOD_PHONE,
-//                    ContactRequest::CONTACT_METHOD_EMAIL => ContactRequest::CONTACT_METHOD_EMAIL
-//                ],
-//                'required' => true,
-//                'label'    => 'orocrm.contactus.contactrequest.preferred_contact_method.label',
-//                'client_validation' => false,
-//            ]
-//        );
+//        $builder->add('firstName', 'text', ['label' => 'Your name']);
+        $builder->add(
+            'organizationName',
+            'text',
+            ['required' => false, 'label' => 'orocrm.contactus.contactrequest.organization_name.label']
+        );
+        $builder->add(
+            'preferredContactMethod',
+            'choice',
+            [
+                'choices'  => [
+                    ContactRequest::CONTACT_METHOD_BOTH  => ContactRequest::CONTACT_METHOD_BOTH,
+                    ContactRequest::CONTACT_METHOD_PHONE => ContactRequest::CONTACT_METHOD_PHONE,
+                    ContactRequest::CONTACT_METHOD_EMAIL => ContactRequest::CONTACT_METHOD_EMAIL
+                ],
+                'required' => true,
+                'label'    => 'orocrm.contactus.contactrequest.preferred_contact_method.label',
+                'client_validation' => false,
+            ]
+        );
         $builder->add(
             'phone_or_email',
             'text',
             ['required' => false, 'label' => 'orocrm.contactus.contactrequest.phone.label']
         );
-//        $builder->add(
-//            'emailAddress',
-//            'text',
-//            ['required' => false, 'label' => 'orocrm.contactus.contactrequest.email_address.label']
-//        );
-//        $builder->add(
-//            'contactReason',
-//            'entity',
-//            [
-//                'class'       => 'OroCRMContactUsBundle:ContactReason',
-//                'property'    => 'label',
-//                'empty_value' => 'orocrm.contactus.contactrequest.choose_contact_reason.label',
-//                'required'    => false,
-//                'label'       => 'orocrm.contactus.contactrequest.contact_reason.label',
-//                'client_validation' => false,
-//            ]
-//        );
+        $builder->add(
+            'phone',
+            'text',
+            ['required' => false, 'label' => 'orocrm.contactus.contactrequest.phone.label']
+        );
+        $builder->add(
+            'emailAddress',
+            'text',
+            ['required' => false, 'label' => 'orocrm.contactus.contactrequest.email_address.label']
+        );
+        $builder->add(
+            'contactReason',
+            'entity',
+            [
+                'class'       => 'OroCRMContactUsBundle:ContactReason',
+                'property'    => 'label',
+                'empty_value' => 'orocrm.contactus.contactrequest.choose_contact_reason.label',
+                'required'    => false,
+                'label'       => 'orocrm.contactus.contactrequest.contact_reason.label',
+                'client_validation' => false,
+            ]
+        );
         $builder->add('comment', 'textarea', ['label' => 'orocrm.contactus.contactrequest.comment.label']);
         $builder->add('submit', 'submit');
     }
