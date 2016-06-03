@@ -1,0 +1,30 @@
+{
+    "name": "mavenecommerce/oro-crm-form-bundle",
+    "description": "OroCRM Package, Embed form",
+    "homepage": "https://github.com/mavenecommerce/OroCRMFormBundle",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Andrii Korolov",
+            "homepage": "https://www.mavenecommerce.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Maven\\Bundle\\FromBundle": "src/"
+        }
+    },
+    "target-dir": "src/Maven/Bundle/FromBundle",
+    "require": {
+        "php": ">=5.4.4",
+        "oro/platform": "1.x-dev",
+        "oro/crm": "1.x-dev"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
+}

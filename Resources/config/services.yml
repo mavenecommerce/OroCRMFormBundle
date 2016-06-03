@@ -1,0 +1,26 @@
+parameters:
+    maven_form
+    maven_form.embedded_form.class:   Maven\Bundle\FromBundle\Form\Type\ContactRequestType
+    maven_form.datagrid.helper.class: Maven\Bundle\FromBundle\Datagrid\ContactRequestDatagridHelper
+services:
+    maven_form.embedded_form:
+        class: %maven_form.embedded_form.class%
+        tags:
+            - { name: oro_embedded_form, label: maven.form.embedded_form.label }
+            - { name: form.type, alias: maven_form_contact_request }
+
+    maven_form.contact_request.form:
+        class: Symfony\Component\Form\Form
+        factory_method: createNamed
+        factory_service: form.factory
+        arguments:
+            - "maven_form_contact_request"
+            - "maven_form_contact_request"
+            - null
+            - { dataChannelField : true }
+
+
+    maven_form.datagrid.helper:
+         class: %maven_form.datagrid.helper.class%
+         tags:
+             - { name: kernel.event_listener, event: oro_datagrid.datagrid.build.before.orcrm-contact-requests-grid-extended, method: buildBefore }

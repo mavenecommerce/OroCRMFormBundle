@@ -1,0 +1,5 @@
+orocrm:
+    mavenform:
+        embedded_form:
+            label: Contact Us Request
+        required_fields: "* Required Fields"

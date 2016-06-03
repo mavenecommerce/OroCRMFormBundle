@@ -1,0 +1,2 @@
+bundles:
+    - { name: Maven\Bundle\FromBundle\MavenFormBundle, priority: 30 }
