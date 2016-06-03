@@ -1,5 +1,4 @@
 parameters:
-    maven_form
     maven_form.embedded_form.class:   Maven\Bundle\FromBundle\Form\Type\ContactRequestType
     maven_form.datagrid.helper.class: Maven\Bundle\FromBundle\Datagrid\ContactRequestDatagridHelper
 services:
