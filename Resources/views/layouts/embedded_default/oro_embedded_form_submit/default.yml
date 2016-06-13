@@ -5,14 +5,14 @@ layout:
         - '@setOption':
             id:          embedded_form
             optionName:  preferred_fields
-            optionValue: [firstName, lastName, organizationName, preferredContactMethod, phone, emailAddress, contactReason]
-        - '@setOption':
-            id:          embedded_form
-            optionName:  groups
-            optionValue:
-                contact:
-                    title:   Contact Information
-                    default: true
+            optionValue: [fullName, phone_or_email]
+#        - '@setOption':
+#            id:          embedded_form
+#            optionName:  groups
+#            optionValue:
+#                contact:
+#                    title:   Contact Information
+#                    default: true
         - '@move':
             id:          embedded_form_submit
             parentId:    embedded_form
