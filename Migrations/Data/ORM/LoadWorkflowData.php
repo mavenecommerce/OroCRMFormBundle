@@ -1,6 +1,6 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Migrations\Data\ORM;
+namespace Maven\Bundle\FormBundle\Migrations\Data\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;

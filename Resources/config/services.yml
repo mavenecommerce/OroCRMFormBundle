@@ -1,10 +1,12 @@
 parameters:
-    maven_form.embedded_form.class:   Maven\Bundle\FromBundle\Form\Type\ContactRequestType
-    maven_form.datagrid.helper.class: Maven\Bundle\FromBundle\Datagrid\ContactRequestDatagridHelper
+    maven_form.embedded_form.class:   Maven\Bundle\FormBundle\Form\Type\ContactRequestType
+    maven_form.datagrid.helper.class: Maven\Bundle\FormBundle\Datagrid\ContactRequestDatagridHelper
 
 services:
     maven_form.embedded_form:
         class: %maven_form.embedded_form.class%
+        arguments:
+            - @request_stack
         tags:
             - { name: oro_embedded_form, label: maven.form.embedded_form.label }
             - { name: form.type, alias: maven_form_contact_request }
@@ -18,13 +20,3 @@ services:
             - "maven_form_contact_request"
             - null
             - { dataChannelField : true }
-
-    contact.listener:
-        class: Maven\Bundle\FromBundle\Listener\ContactForm
-        tags:
-            - { name: kernel.event_listener, event: oro_embedded_form.form_submit.after }
-
-#    maven_form.datagrid.helper:
-#         class: %maven_form.datagrid.helper.class%
-#         tags:
-#             - { name: kernel.event_listener, event: oro_datagrid.datagrid.build.before.orcrm-contact-requests-grid-extended, method: buildBefore }

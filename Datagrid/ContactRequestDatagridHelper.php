@@ -1,6 +1,6 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Datagrid;
+namespace Maven\Bundle\FormBundle\Datagrid;
 
 use Doctrine\ORM\EntityManager;
 

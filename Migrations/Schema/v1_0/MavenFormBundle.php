@@ -1,6 +1,6 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Migrations\Schema\v1_0;
+namespace Maven\Bundle\FormBundle\Migrations\Schema\v1_0;
 
 use Doctrine\DBAL\Schema\Schema;
 

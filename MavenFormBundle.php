@@ -1,11 +1,11 @@
 <?php
 
-namespace Maven\Bundle\FromBundle;
+namespace Maven\Bundle\FormBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-use Maven\Bundle\FromBundle\DependencyInjection\Compiler\ContactRequestFormPass;
+use Maven\Bundle\FormBundle\DependencyInjection\Compiler\ContactRequestFormPass;
 
 class MavenFormBundle extends Bundle
 {

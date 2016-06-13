@@ -1,6 +1,6 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\DependencyInjection\Compiler;
+namespace Maven\Bundle\FormBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

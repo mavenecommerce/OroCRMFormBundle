@@ -11,10 +11,10 @@
     ],
     "autoload": {
         "psr-0": {
-            "Maven\\Bundle\\FromBundle": "src/"
+            "Maven\\Bundle\\FormBundle": "src/"
         }
     },
-    "target-dir": "src/Maven/Bundle/FromBundle",
+    "target-dir": "src/Maven/Bundle/FormBundle",
     "require": {
         "php": ">=5.4.4",
         "oro/platform": "1.x-dev",

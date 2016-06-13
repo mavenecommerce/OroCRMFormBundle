@@ -1,10 +1,10 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Tests\Unit\Form\Type;
+namespace Maven\Bundle\FormBundle\Tests\Unit\Form\Type;
 
 use Oro\Bundle\EmbeddedFormBundle\Form\Type\EmbeddedFormInterface;
 
-use Maven\Bundle\FromBundle\Form\Type\ContactRequestType;
+use Maven\Bundle\FormBundle\Form\Type\ContactRequestType;
 
 class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
 {
