@@ -1,6 +1,6 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Migrations\Data\ORM;
+namespace Maven\Bundle\FormBundle\Migrations\Data\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -10,6 +10,9 @@ use OroCRM\Bundle\ChannelBundle\Entity\Channel;
 use OroCRM\Bundle\ChannelBundle\Model\ChannelAwareInterface;
 use OroCRM\Bundle\ChannelBundle\Migrations\Data\ORM\AbstractDefaultChannelDataFixture;
 
+/**
+ * @package Maven\Bundle\FormBundle\Migrations\Data\ORM
+ */
 class DefaultChannelData extends AbstractDefaultChannelDataFixture
 {
     const PREFERABLE_CHANNEL_TYPE = 'magento';

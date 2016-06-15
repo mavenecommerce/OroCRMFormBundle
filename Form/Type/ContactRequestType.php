@@ -1,17 +1,38 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Form\Type;
+namespace Maven\Bundle\FormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 use Oro\Bundle\EmbeddedFormBundle\Form\Type\EmbeddedFormInterface;
 
 use OroCRM\Bundle\ContactUsBundle\Entity\ContactRequest;
 
+use Maven\Bundle\FormBundle\Form\EventListener\ContactRequestSubscriber;
+use Maven\Bundle\FormBundle\Form\Validator\Constraints\ConstrainsPhoneOrEmail;
+
+/**
+ * @package Maven\Bundle\FormBundle\Form\Type
+ */
 class ContactRequestType extends AbstractType implements EmbeddedFormInterface
 {
+    /**
+     * @var RequestStack
+     */
+    protected $request;
+
+    /**
+     * @param RequestStack|null $request
+     */
+    public function __construct(RequestStack $request = null)
+    {
+        $this->request = $request;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -33,64 +54,62 @@ class ContactRequestType extends AbstractType implements EmbeddedFormInterface
                     'required' => true,
                     'label'    => 'orocrm.contactus.contactrequest.data_channel.label',
                     'entities' => [
-                        'OroCRM\\Bundle\\ContactUsBundle\\Entity\\ContactRequest'
+                        'OroCRM\\Bundle\\ContactUsBundle\\Entity\\ContactRequest',
                     ],
                 ]
             );
         }
 
-        $builder->add('fullName', 'text', ['mapped' => false, 'label' => 'orocrm.mavenform.full_name.label']);
-        //$builder->getAttribute('fullName');
-        $builder->add('lastName', 'hidden', ['validation_groups' => false]);
-        $builder->add('firstName', 'hidden', ['validation_groups' => false]);
-//        $builder->add(
-//            'organizationName',
-//            'text',
-//            ['required' => false, 'label' => 'orocrm.contactus.contactrequest.organization_name.label']
-//        );
-//        $builder->add(
-//            'preferredContactMethod',
-//            'choice',
-//            [
-//                'choices'  => [
-//                    ContactRequest::CONTACT_METHOD_BOTH  => ContactRequest::CONTACT_METHOD_BOTH,
-//                    ContactRequest::CONTACT_METHOD_PHONE => ContactRequest::CONTACT_METHOD_PHONE,
-//                    ContactRequest::CONTACT_METHOD_EMAIL => ContactRequest::CONTACT_METHOD_EMAIL
-//                ],
-//                'required' => true,
-//                'label'    => 'orocrm.contactus.contactrequest.preferred_contact_method.label',
-//                'client_validation' => false,
-//            ]
-//        );
         $builder->add(
-            'phone_or_email',
+            'fullName',
             'text',
-            ['required' => false, 'mapped' => false, 'label' => 'orocrm.contactus.contactrequest.phone.label']
+            [
+                'mapped'  => false,
+                'label'   => false,
+                'constraints' => [
+                    new NotBlank(),
+                ],
+                'attr'    => [
+                    'placeholder' => 'maven.form.embedded_form.full_name.label',
+                ],
+            ]
         );
         $builder->add(
-            'phone',
-            'hidden',
-            ['required' => false, 'label' => 'orocrm.contactus.contactrequest.phone.label']
+            'phoneOrEmail',
+            'text',
+            [
+                'required' => false,
+                'mapped'   => false,
+                'label'    => false,
+                'constraints' => [
+                    new NotBlank(),
+                    new ConstrainsPhoneOrEmail(),
+                ],
+                'attr'     => [
+                    'placeholder' => 'maven.form.embedded_form.phoneOrName',
+                ],
+            ]
         );
         $builder->add(
-            'emailAddress',
-            'hidden',
-            ['validation_groups' => false, 'required' => false, 'label' => 'orocrm.contactus.contactrequest.email_address.label']
+            'comment',
+            'textarea',
+            [
+                'label' => false,
+                'attr'  => [
+                    'placeholder' => 'maven.form.embedded_form.comment.label',
+                ],
+            ]
         );
-//        $builder->add(
-//            'contactReason',
-//            'entity',
-//            [
-//                'class'       => 'OroCRMContactUsBundle:ContactReason',
-//                'property'    => 'label',
-//                'empty_value' => 'orocrm.contactus.contactrequest.choose_contact_reason.label',
-//                'required'    => false,
-//                'label'       => 'orocrm.contactus.contactrequest.contact_reason.label',
-//                'client_validation' => false,
-//            ]
-//        );
-        $builder->add('comment', 'textarea', ['label' => 'orocrm.contactus.contactrequest.comment.label']);
         $builder->add('submit', 'submit');
+
+        if (!is_null($this->request->getMasterRequest())) {
+            $builder->addEventSubscriber(
+                new ContactRequestSubscriber(
+                    $this->request->getMasterRequest()
+                        ->get('_route')
+                )
+            );
+        }
     }
 
     /**
@@ -101,7 +120,7 @@ class ContactRequestType extends AbstractType implements EmbeddedFormInterface
         $resolver->setDefaults(
             [
                 'data_class' => 'OroCRM\Bundle\ContactUsBundle\Entity\ContactRequest',
-                'dataChannelField' => false
+                'dataChannelField' => false,
             ]
         );
     }

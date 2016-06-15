@@ -1,12 +1,15 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\DependencyInjection;
+namespace Maven\Bundle\FormBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
+/**
+ * @package Maven\Bundle\FormBundle\DependencyInjection
+ */
 class MavenFormExtension extends Extension
 {
     /**

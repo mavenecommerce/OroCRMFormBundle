@@ -7,15 +7,12 @@
     </div>
 {% endblock %}
 
-
 {% block form_field_widget %}
     <div class="col-xs-12 col-md-12">
-
         <div class="form-group" {% if form.vars.extra_field is defined and form.vars.extra_field %} id="{{ form.vars.id ~ '_holder' }}" {% endif %}>
             {{ form_row(form) }}
-            {#<input type="text" name="nameModalContactUs" id="nameModalContactUs" class="form-control input-lg" placeholder="Your name *" data-error="Please fill out this field" required="">#}
-            {#<div class="help-block with-errors"></div>#}
         </div>
+    </div>
 {% endblock %}
 
 {% block form_widget %}
@@ -38,7 +35,7 @@
 
 {% block _embedded_form_submit_widget %}
     <div class="buttons-set">
-        <p class="required">{% trans %}orocrm.mavenform.embedded_form.required_fields{% endtrans %}</p>
+        <p class="required">{% trans %}maven.form.embedded_form.required_fields{% endtrans %}</p>
         {{ form_widget(form) }}
     </div>
 {% endblock %}

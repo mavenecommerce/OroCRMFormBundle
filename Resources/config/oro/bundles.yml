@@ -1,2 +1,2 @@
 bundles:
-    - { name: Maven\Bundle\FromBundle\MavenFormBundle, priority: 30 }
+    - { name: Maven\Bundle\FormBundle\MavenFormBundle, priority: 30 }

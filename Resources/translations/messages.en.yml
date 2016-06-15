@@ -1,7 +1,8 @@
-orocrm:
-    mavenform:
+maven:
+    form:
         embedded_form:
-          label: Contact Us Request
-        required_fields: "* Required Fields"
-        full_name:
-          label: Full Name
+            label: Contact Us Request
+            required_fields: "* Required Fields"
+            full_name.label: Full name
+            phoneOrName: Your email or phone number
+            comment.label: Tell us how we can help you with your development process

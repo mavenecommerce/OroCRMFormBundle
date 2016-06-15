@@ -1,36 +1,56 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Tests\Unit\Form\Type;
+namespace Maven\Bundle\FormBundle\Tests\Unit\Form\Type;
+
+use Symfony\Component\HttpFoundation\RequestStack;
 
 use Oro\Bundle\EmbeddedFormBundle\Form\Type\EmbeddedFormInterface;
 
-use Maven\Bundle\FromBundle\Form\Type\ContactRequestType;
+use Maven\Bundle\FormBundle\Form\Type\ContactRequestType;
 
+/**
+ * @package Maven\Bundle\FormBundle\Tests\Unit\Form\Type
+ */
 class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
 {
     /** @var ContactRequestType */
     protected $formType;
 
+    /**
+     * {@inheritdoc}
+     */
     public function setUp()
     {
-        $this->formType = new ContactRequestType();
+        $this->formType = new ContactRequestType(new RequestStack());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function tearDown()
     {
         unset($this->formType);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function testHasName()
     {
-        $this->assertEquals('orocrm_magento_contactus_contact_request', $this->formType->getName());
+        $this->assertEquals('maven_form_contact_request', $this->formType->getName());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function testParent()
     {
         $this->assertEquals('form', $this->formType->getParent());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function testImplementEmbeddedFormInterface()
     {
         $this->assertTrue($this->formType instanceof EmbeddedFormInterface);
@@ -42,13 +62,16 @@ class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('string', $this->formType->getDefaultSuccessMessage());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function testBuildForm()
     {
         $builder = $this->getMockBuilder('Symfony\Component\Form\FormBuilder')
             ->disableOriginalConstructor()->getMock();
 
         $fields = [];
-        $builder->expects($this->exactly(10))
+        $builder->expects($this->exactly(5))
             ->method('add')
             ->will(
                 $this->returnCallback(
@@ -65,13 +88,8 @@ class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(
             [
                 'dataChannel'            => 'orocrm_channel_select_type',
-                'firstName'              => 'text',
-                'lastName'               => 'text',
-                'organizationName'       => 'text',
-                'preferredContactMethod' => 'choice',
-                'phone'                  => 'text',
-                'emailAddress'           => 'text',
-                'contactReason'          => 'entity',
+                'fullName'              => 'text',
+                'phoneOrEmail'           => 'text',
                 'comment'                => 'textarea',
                 'submit'                 => 'submit',
             ],

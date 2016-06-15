@@ -1,6 +1,6 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Datagrid;
+namespace Maven\Bundle\FormBundle\Datagrid;
 
 use Doctrine\ORM\EntityManager;
 
@@ -8,6 +8,9 @@ use Oro\Bundle\DataGridBundle\Event\BuildBefore;
 use Oro\Bundle\DataGridBundle\Extension\Formatter\Configuration;
 use Oro\Bundle\WorkflowBundle\Entity\WorkflowStep;
 
+/**
+ * @package Maven\Bundle\FormBundle\Datagrid
+ */
 class ContactRequestDatagridHelper
 {
     /**

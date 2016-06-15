@@ -11,14 +11,20 @@
     ],
     "autoload": {
         "psr-0": {
-            "Maven\\Bundle\\FromBundle": "src/"
+            "Maven\\Bundle\\FormBundle": "src/"
         }
     },
-    "target-dir": "src/Maven/Bundle/FromBundle",
+    "target-dir": "src/Maven/Bundle/FormBundle",
     "require": {
         "php": ">=5.4.4",
         "oro/platform": "1.x-dev",
-        "oro/crm": "1.x-dev"
+        "oro/crm": "1.x-dev",
+        "mavenecommerce/oro-crm-embedded-form-bundle": "1.x-dev"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "2.*",
+        "phpmd/phpmd" : "@stable",
+        "sebastian/phpcpd": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

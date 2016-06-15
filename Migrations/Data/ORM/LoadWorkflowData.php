@@ -1,6 +1,6 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Migrations\Data\ORM;
+namespace Maven\Bundle\FormBundle\Migrations\Data\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -8,6 +8,9 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
+/**
+ * @package Maven\Bundle\FormBundle\Migrations\Data\ORM
+ */
 class LoadWorkflowData extends AbstractFixture implements ContainerAwareInterface
 {
     /** @var ContainerInterface */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Maven\Bundle\FromBundle\Migrations\Schema;
+namespace Maven\Bundle\FormBundle\Migrations\Schema;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -9,8 +9,12 @@ use Doctrine\DBAL\Schema\Schema;
 
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 use Oro\Bundle\MigrationBundle\Migration\Installation;
-use Maven\Bundle\FromBundle\Migrations\Schema\v1_0\UpdateWorkflowItemStepData;
 
+use Maven\Bundle\FormBundle\Migrations\Schema\v1_0\UpdateWorkflowItemStepData;
+
+/**
+ * @package Maven\Bundle\FormBundle\Migrations\Schema
+ */
 class MavenFormBundleInstaller implements Installation, ContainerAwareInterface
 {
     /** @var ContainerInterface */
