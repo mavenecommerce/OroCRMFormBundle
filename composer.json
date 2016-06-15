@@ -7,6 +7,11 @@
         {
             "name": "Andrii Korolov",
             "homepage": "https://www.mavenecommerce.com"
+        },
+        {
+            "name": "Alex Levchenia",
+            "email": "levlexx@gmail.com",
+            "role": "Developer"
         }
     ],
     "autoload": {
@@ -20,11 +25,6 @@
         "oro/platform": "1.x-dev",
         "oro/crm": "1.x-dev",
         "mavenecommerce/oro-crm-embedded-form-bundle": "1.x-dev"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "2.*",
-        "phpmd/phpmd" : "@stable",
-        "sebastian/phpcpd": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
