@@ -9,8 +9,12 @@ use Doctrine\DBAL\Schema\Schema;
 
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 use Oro\Bundle\MigrationBundle\Migration\Installation;
+
 use Maven\Bundle\FormBundle\Migrations\Schema\v1_0\UpdateWorkflowItemStepData;
 
+/**
+ * @package Maven\Bundle\FormBundle\Migrations\Schema
+ */
 class MavenFormBundleInstaller implements Installation, ContainerAwareInterface
 {
     /** @var ContainerInterface */

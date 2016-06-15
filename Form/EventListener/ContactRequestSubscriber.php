@@ -5,25 +5,27 @@ namespace Maven\Bundle\FormBundle\Form\EventListener;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 use OroCRM\Bundle\ContactUsBundle\Entity\ContactRequest;
 
+/**
+ * @package Maven\Bundle\FormBundle\Form\EventListener
+ */
 class ContactRequestSubscriber implements EventSubscriberInterface
 {
     const ROUTE = 'orocrm_contactus_request_create';
 
     /**
-     * @var RequestStack
+     * @var string
      */
-    protected $request;
+    protected $route;
 
     /**
-     * @param RequestStack $request
+     * @param string $route
      */
-    public function __construct(RequestStack $request)
+    public function __construct($route)
     {
-        $this->request = $request->getMasterRequest();
+        $this->route = $route;
     }
 
     /**
@@ -33,7 +35,7 @@ class ContactRequestSubscriber implements EventSubscriberInterface
     {
         return [
             FormEvents::PRE_SUBMIT => 'preSubmit',
-            FormEvents::PRE_SET_DATA => 'preSetData'
+            FormEvents::PRE_SET_DATA => 'preSetData',
         ];
     }
 
@@ -64,7 +66,7 @@ class ContactRequestSubscriber implements EventSubscriberInterface
     {
         $data = $event->getData();
 
-        if (!$data || !$data['fullName'] ||$this->isAdminRoute()) {
+        if (!$data || !$data['fullName'] || !$data['fullName'] ||$this->isAdminRoute()) {
             return;
         }
 
@@ -96,7 +98,7 @@ class ContactRequestSubscriber implements EventSubscriberInterface
 
         return [
             'firstName' => $matches[0],
-            'lastName'  => $matches[1]
+            'lastName'  => $matches[1],
         ];
     }
 
@@ -119,6 +121,6 @@ class ContactRequestSubscriber implements EventSubscriberInterface
      */
     private function isAdminRoute()
     {
-        return $this->request->get('_route') === self::ROUTE;
+        return $this->route === self::ROUTE;
     }
 }

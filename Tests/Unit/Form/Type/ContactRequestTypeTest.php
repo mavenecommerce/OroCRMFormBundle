@@ -6,31 +6,49 @@ use Oro\Bundle\EmbeddedFormBundle\Form\Type\EmbeddedFormInterface;
 
 use Maven\Bundle\FormBundle\Form\Type\ContactRequestType;
 
+/**
+ * @package Maven\Bundle\FormBundle\Tests\Unit\Form\Type
+ */
 class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
 {
     /** @var ContactRequestType */
     protected $formType;
 
+    /**
+     * {@inheritdoc}
+     */
     public function setUp()
     {
         $this->formType = new ContactRequestType();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function tearDown()
     {
         unset($this->formType);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function testHasName()
     {
         $this->assertEquals('orocrm_magento_contactus_contact_request', $this->formType->getName());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function testParent()
     {
         $this->assertEquals('form', $this->formType->getParent());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function testImplementEmbeddedFormInterface()
     {
         $this->assertTrue($this->formType instanceof EmbeddedFormInterface);
@@ -42,6 +60,9 @@ class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('string', $this->formType->getDefaultSuccessMessage());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function testBuildForm()
     {
         $builder = $this->getMockBuilder('Symfony\Component\Form\FormBuilder')

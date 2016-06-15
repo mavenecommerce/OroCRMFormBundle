@@ -6,13 +6,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 use Oro\Bundle\EmbeddedFormBundle\Form\Type\EmbeddedFormInterface;
 
 use OroCRM\Bundle\ContactUsBundle\Entity\ContactRequest;
 
 use Maven\Bundle\FormBundle\Form\EventListener\ContactRequestSubscriber;
+use Maven\Bundle\FormBundle\Form\Validator\Constraints\ConstrainsPhoneOrEmail;
 
+/**
+ * @package Maven\Bundle\FormBundle\Form\Type
+ */
 class ContactRequestType extends AbstractType implements EmbeddedFormInterface
 {
     /**
@@ -59,9 +64,12 @@ class ContactRequestType extends AbstractType implements EmbeddedFormInterface
             'fullName',
             'text',
             [
-                'mapped' => false,
-                'label'  => false,
-                'attr'   => [
+                'mapped'  => false,
+                'label'   => false,
+                'constraints' => [
+                    new NotBlank(),
+                ],
+                'attr'    => [
                     'placeholder' => 'maven.form.embedded_form.full_name.label',
                 ],
             ]
@@ -73,7 +81,11 @@ class ContactRequestType extends AbstractType implements EmbeddedFormInterface
                 'required' => false,
                 'mapped'   => false,
                 'label'    => false,
-                'attr'   => [
+                'constraints' => [
+                    new NotBlank(),
+                    new ConstrainsPhoneOrEmail(),
+                ],
+                'attr'     => [
                     'placeholder' => 'maven.form.embedded_form.phoneOrName',
                 ],
             ]
@@ -82,15 +94,20 @@ class ContactRequestType extends AbstractType implements EmbeddedFormInterface
             'comment',
             'textarea',
             [
-                'label'    => false,
-                'attr'   => [
+                'label' => false,
+                'attr'  => [
                     'placeholder' => 'maven.form.embedded_form.comment.label',
                 ],
             ]
         );
         $builder->add('submit', 'submit');
 
-        $builder->addEventSubscriber(new ContactRequestSubscriber($this->request));
+        $builder->addEventSubscriber(
+            new ContactRequestSubscriber(
+                $this->request->getMasterRequest()
+                    ->get('_route')
+            )
+        );
     }
 
     /**

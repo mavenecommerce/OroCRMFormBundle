@@ -7,6 +7,9 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
+/**
+ * @package Maven\Bundle\FormBundle\DependencyInjection
+ */
 class MavenFormExtension extends Extension
 {
     /**

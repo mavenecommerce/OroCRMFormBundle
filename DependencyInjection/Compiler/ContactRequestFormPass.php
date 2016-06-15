@@ -6,6 +6,9 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * @package Maven\Bundle\FormBundle\DependencyInjection\Compiler
+ */
 class ContactRequestFormPass implements CompilerPassInterface
 {
     const HANDLER_SERVICE_ID = 'orocrm_contact_us.contact_request.form.handler';
