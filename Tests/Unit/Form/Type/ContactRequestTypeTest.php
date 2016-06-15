@@ -2,6 +2,8 @@
 
 namespace Maven\Bundle\FormBundle\Tests\Unit\Form\Type;
 
+use Symfony\Component\HttpFoundation\RequestStack;
+
 use Oro\Bundle\EmbeddedFormBundle\Form\Type\EmbeddedFormInterface;
 
 use Maven\Bundle\FormBundle\Form\Type\ContactRequestType;
@@ -19,7 +21,7 @@ class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->formType = new ContactRequestType();
+        $this->formType = new ContactRequestType(new RequestStack());
     }
 
     /**
@@ -35,7 +37,7 @@ class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasName()
     {
-        $this->assertEquals('orocrm_magento_contactus_contact_request', $this->formType->getName());
+        $this->assertEquals('maven_form_contact_request', $this->formType->getName());
     }
 
     /**
@@ -69,7 +71,7 @@ class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()->getMock();
 
         $fields = [];
-        $builder->expects($this->exactly(10))
+        $builder->expects($this->exactly(5))
             ->method('add')
             ->will(
                 $this->returnCallback(
@@ -86,13 +88,8 @@ class ContactRequestTypeTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(
             [
                 'dataChannel'            => 'orocrm_channel_select_type',
-                'firstName'              => 'text',
-                'lastName'               => 'text',
-                'organizationName'       => 'text',
-                'preferredContactMethod' => 'choice',
-                'phone'                  => 'text',
-                'emailAddress'           => 'text',
-                'contactReason'          => 'entity',
+                'fullName'              => 'text',
+                'phoneOrEmail'           => 'text',
                 'comment'                => 'textarea',
                 'submit'                 => 'submit',
             ],

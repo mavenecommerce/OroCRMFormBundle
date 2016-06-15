@@ -102,12 +102,14 @@ class ContactRequestType extends AbstractType implements EmbeddedFormInterface
         );
         $builder->add('submit', 'submit');
 
-        $builder->addEventSubscriber(
-            new ContactRequestSubscriber(
-                $this->request->getMasterRequest()
-                    ->get('_route')
-            )
-        );
+        if (!is_null($this->request->getMasterRequest())) {
+            $builder->addEventSubscriber(
+                new ContactRequestSubscriber(
+                    $this->request->getMasterRequest()
+                        ->get('_route')
+                )
+            );
+        }
     }
 
     /**
