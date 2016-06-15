@@ -12,11 +12,15 @@ matrix:
   allow_failures:
     - php: hhvm
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
 before_script:
- - travis_retry composer selfupdate
- - travis_retry composer install --no-interaction
+  - phpenv config-add travis.php.ini
+  - wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+  - wget https://phar.phpunit.de/phpcpd.phar
 
 script:
- - php ./vendor/bin/phpcs --encoding=utf-8 --extensions=php --standard=psr2 --ignore=vendor .
- - php ./vendor/bin/phpmd . text rulesets/codesize.xml --exclude vendor
- - php ./vendor/bin/phpcpd --min-lines 25 --verbose --exclude vendor .
+ - php phpcs.phar --encoding=utf-8 --extensions=php --standard=psr2 --ignore=vendor .
+ - php phpcpd.phar --min-lines 25 --verbose --exclude vendor .
