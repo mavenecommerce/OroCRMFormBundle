@@ -21,6 +21,11 @@
         "oro/crm": "1.x-dev",
         "mavenecommerce/oro-crm-embedded-form-bundle": "1.x-dev"
     },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "2.*",
+        "phpmd/phpmd" : "@stable",
+        "sebastian/phpcpd": "*"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
